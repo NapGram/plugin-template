@@ -22,4 +22,5 @@ jobs:
         run: pnpm prisma generate
         env:
           DATABASE_URL: "postgresql://postgres:password@localhost:5432/napgram?schema=public"
+      - run: pnpm validate
       - run: pnpm type-check
