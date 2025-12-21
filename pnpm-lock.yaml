@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@napgram/sdk':
+        specifier: ^0.1.0
+        version: 0.1.1
     devDependencies:
       '@types/node':
         specifier: ^25.0.3
@@ -16,6 +20,15 @@ importers:
         version: 5.9.3
 
 packages:
+
+  '@napgram/core@0.1.1':
+    resolution: {integrity: sha512-fkPqTAHzLImmHW+TYSRFAtx6Wltx0q381WWynCpQY4Gmt26GFAJ4I9Au2cqJg7OjLyLky6XtE7MYPYV1NIoJsQ==}
+
+  '@napgram/sdk@0.1.1':
+    resolution: {integrity: sha512-9mBER95ECbNoIL+6qYgbU9NkFB2AmuyfCXDTTS4a/ClFnuHVju8k7Mgj0bRsi4i8j4OXVEgS3IsqUdw2Ahj1NA==}
+
+  '@napgram/utils@0.1.1':
+    resolution: {integrity: sha512-vA4po7yezVBgvUZ0dA9DSeL8V093EFfwFOOdS2L9RgqnyKGqGSHjs6+g9uBiwLXUEHqWLeYHJYqIiT8J2paa7w==}
 
   '@types/node@25.0.3':
     resolution: {integrity: sha512-W609buLVRVmeW693xKfzHeIV6nJGGz98uCPfeXI1ELMLXVeKYZ9m15fAMSaUPBHYLGFsVRcMmSCksQOrZV9BYA==}
@@ -29,6 +42,17 @@ packages:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
 snapshots:
+
+  '@napgram/core@0.1.1': {}
+
+  '@napgram/sdk@0.1.1':
+    dependencies:
+      '@napgram/core': 0.1.1
+      '@napgram/utils': 0.1.1
+
+  '@napgram/utils@0.1.1':
+    dependencies:
+      '@napgram/core': 0.1.1
 
   '@types/node@25.0.3':
     dependencies:

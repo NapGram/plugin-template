@@ -1,4 +1,4 @@
-declare module '@naplink/napgram-plugin-types' {
+declare module '@napgram/sdk' {
   export interface NapGramPlugin {
     id: string;
     name: string;
@@ -43,6 +43,12 @@ declare module '@naplink/napgram-plugin-types' {
   export interface EventSubscription {
     unsubscribe(): void;
   }
+
+  export type PluginWithConfig<TConfig = unknown> = Omit<NapGramPlugin, 'install'> & {
+    install(ctx: PluginContext, config?: TConfig): void | Promise<void>;
+  };
+
+  export function definePlugin<TConfig = unknown, T extends PluginWithConfig<TConfig> = PluginWithConfig<TConfig>>(plugin: T): T;
 
   export interface MessageEvent {
     eventId: string;

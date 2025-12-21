@@ -13,6 +13,13 @@ NapGram 原生插件模板仓库（可作为 GitHub **Template repository** 使�
 
 ## 快速开始
 
+### 0) 使用模板创建仓库
+
+1. 打开本仓库，点击 **Use this template** 创建新仓库
+2. 克隆新仓库到本地
+3. 修改 `napgram-plugin.json`（id/name/description/permissions）
+4. 修改 `package.json`（name/version/description）
+
 ### 1) 安装依赖
 
 ```bash
@@ -24,9 +31,9 @@ pnpm install
 编辑 `src/index.ts`，实现你的插件逻辑：
 
 ```typescript
-import type { NapGramPlugin } from '@naplink/napgram-plugin-types';
+import { definePlugin } from '@napgram/sdk';
 
-const plugin: NapGramPlugin = {
+const plugin = definePlugin({
   id: 'my-plugin',
   name: 'My Plugin',
   version: '1.0.0',
@@ -36,12 +43,12 @@ const plugin: NapGramPlugin = {
       if (event.message.text === 'ping') await event.reply('pong');
     });
   }
-};
+});
 
 export default plugin;
 ```
 
-> 注：模板内包含 `src/types/@naplink/napgram-plugin-types/index.d.ts` 的最小类型声明，便于直接开发与通过 CI；构建产物不会包含该依赖。
+> 注：模板内包含 `src/types/@napgram/sdk/index.d.ts` 的最小类型声明，便于离线开发与通过 CI；构建产物不会包含该声明。模板默认依赖 `@napgram/sdk`，如已安装可按需移除此兜底类型。
 
 ### 3) 构建
 
@@ -177,13 +184,17 @@ napgram-plugin-template/
 
 ### 自动化发布（推荐）
 
-打 tag 后 Release workflow 会自动：
+推送 tag 后 Release workflow 会自动：
 1. 打包产物并生成 `marketplace-index-snippet.json`
-2. 若配置了 `MARKETPLACE_PR_TOKEN`，自动向 marketplace 提交 PR（你负责合并）
+2. 若配置了 `MARKETPLACE_PR_TOKEN`，自动向 **NapGram/marketplace** 提交 PR（请关注 `https://github.com/NapGram/marketplace/pulls`）
 
 需要在**实际插件仓库**配置以下 Secrets：
 - `NPM_TOKEN`：npm automation token（用于 publish）
-- `MARKETPLACE_PR_TOKEN`：GitHub PAT（公开仓库用 `public_repo` 即可）
+- `MARKETPLACE_PR_TOKEN`：GitHub PAT（需要 **repo** + **workflow** 权限）
+
+`MARKETPLACE_PR_TOKEN` 权限建议（fine-grained）：
+- Repository access：选择你的插件仓库
+- Permissions：Contents（read/write）、Pull requests（read/write）、Workflows（read/write）
 
 可选配置：
 - `MARKETPLACE_DIST_HOST`：自定义资源下载域名，未设置时默认使用 GitHub Release 下载链接

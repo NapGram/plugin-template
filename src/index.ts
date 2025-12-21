@@ -1,11 +1,11 @@
-import type { NapGramPlugin } from '@naplink/napgram-plugin-types';
+import { definePlugin } from '@napgram/sdk';
 
 /**
  * Ping Pong 插件
  *
  * 原生 NapGram 插件示例：收到 "ping" 回复 "pong"
  */
-const plugin: NapGramPlugin = {
+const plugin = definePlugin({
   // 插件元信息
   id: 'ping-pong',
   name: 'Ping Pong Plugin (Template)',
@@ -40,7 +40,7 @@ const plugin: NapGramPlugin = {
       ctx.logger.info('Ping Pong plugin unloaded');
     });
   },
-};
+});
 
 // 导出插件（默认导出）
 export default plugin;
