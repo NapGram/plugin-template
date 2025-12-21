@@ -48,7 +48,7 @@ const plugin = definePlugin({
 export default plugin;
 ```
 
-> 注：模板内包含 `src/types/@napgram/sdk/index.d.ts` 的最小类型声明，便于离线开发与通过 CI；构建产物不会包含该声明。模板默认依赖 `@napgram/sdk`，如已安装可按需移除此兜底类型。
+> 注：模板内包含 `src/types/@napgram/sdk/index.d.ts` 的最小类型声明，便于离线开发与通过 CI；构建产物不会包含该声明。平台运行时已内置 `@napgram/sdk`，插件可直接 `import { definePlugin } from '@napgram/sdk'`。
 
 ### 3) 构建
 
