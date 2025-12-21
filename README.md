@@ -161,6 +161,7 @@ napgram-plugin-template/
 ├── scripts/
 │   ├── pack.mjs              # 打包脚本
 │   └── marketplace-snippet.mjs
+│   └── marketplace-upsert.mjs
 ├── napgram-plugin.json       # 插件元信息
 ├── package.json
 ├── tsconfig.json
@@ -173,6 +174,19 @@ napgram-plugin-template/
 2. 上传到 GitHub Release 或 CDN
 3. 生成索引片段：`pnpm marketplace:snippet`
 4. 提交 PR 到 NapGram Marketplace 仓库
+
+### 自动化发布（推荐）
+
+打 tag 后 Release workflow 会自动：
+1. 打包产物并生成 `marketplace-index-snippet.json`
+2. 若配置了 `MARKETPLACE_PR_TOKEN`，自动向 marketplace 提交 PR（你负责合并）
+
+需要在**实际插件仓库**配置以下 Secrets：
+- `NPM_TOKEN`：npm automation token（用于 publish）
+- `MARKETPLACE_PR_TOKEN`：GitHub PAT（公开仓库用 `public_repo` 即可）
+
+可选配置：
+- `MARKETPLACE_DIST_HOST`：自定义资源下载域名，未设置时默认使用 GitHub Release 下载链接
 
 ## 示例插件
 
