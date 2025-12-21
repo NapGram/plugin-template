@@ -18,7 +18,13 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+          registry-url: https://registry.npmjs.org/
+          always-auth: true
       - run: pnpm i
+      - if: ${{ hashFiles('prisma/schema.prisma') != '' }}
+        run: pnpm prisma generate
+        env:
+          DATABASE_URL: "postgresql://postgres:password@localhost:5432/napgram?schema=public"
       - run: pnpm pack:zip
       - run: pnpm pack:tgz
       - run: pnpm -s marketplace:snippet > marketplace-index-snippet.json
