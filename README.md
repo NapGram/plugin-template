@@ -2,7 +2,7 @@
 
 NapGram 原生插件模板仓库（可作为 GitHub **Template repository** 使用）。
 
-这是 **NapGram 原生插件** 模板：插件直接运行在 NapGram 进程内，通过原生 API 访问平台功能（不需要 Koishi，也不需要 WebSocket Gateway）。
+这是 **NapGram 原生插件** 模板：插件直接运行在 NapGram 进程内，通过原生 API 访问平台功能。
 
 ## 特点
 
@@ -135,6 +135,43 @@ const data = await ctx.storage.get('key');
 await ctx.storage.delete('key');
 ```
 
+### 数据库 Schema（可选）
+
+如果需要使用数据库存储结构化数据，在 `src/schema.ts` 中定义 Drizzle ORM schema：
+
+```typescript
+import { pgSchema, serial, text, integer } from 'drizzle-orm/pg-core';
+
+export const mySchema = pgSchema('my_plugin');
+
+export const users = mySchema.table('my_plugin_users', {
+    id: serial('id').primaryKey(),
+    userId: text('userId').notNull(),
+    coins: integer('coins').default(0).notNull(),
+});
+```
+
+在插件中使用：
+
+```typescript
+import { users } from './schema';
+import { eq } from 'drizzle-orm';
+
+// 查询
+const user = await ctx.database.select()
+    .from(users)
+    .where(eq(users.userId, 'user123'))
+    .limit(1);
+
+// 插入
+await ctx.database.insert(users).values({
+    userId: 'user123',
+    coins: 100,
+});
+```
+
+详见 [`docs/DATABASE_SCHEMA.md`](docs/DATABASE_SCHEMA.md)。
+
 ### 日志记录
 
 ```typescript
@@ -164,10 +201,13 @@ ctx.logger.error('错误信息');
 napgram-plugin-template/
 ├── src/
 │   ├── index.ts              # 插件主文件
+│   ├── schema.ts             # 数据库 schema（可选）
 │   └── types/                # 内置类型声明（仅用于开发）
+├── docs/
+│   └── DATABASE_SCHEMA.md    # 数据库 schema 开发指南
 ├── scripts/
 │   ├── pack.mjs              # 打包脚本
-│   └── marketplace-snippet.mjs
+│   ├── marketplace-snippet.mjs
 │   └── marketplace-upsert.mjs
 ├── napgram-plugin.json       # 插件元信息
 ├── package.json
