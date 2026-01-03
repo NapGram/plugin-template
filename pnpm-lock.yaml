@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@napgram/sdk':
-        specifier: ^0.1.2
-        version: 0.1.2
+        specifier: ^0.1.3
+        version: 0.1.3
       drizzle-orm:
         specifier: ^0.45.1
         version: 0.45.1
@@ -24,14 +24,14 @@ importers:
 
 packages:
 
-  '@napgram/core@0.1.2':
-    resolution: {integrity: sha512-W/MOzFQ6OSyGaAO6H2VJPkcZYW/HPvYMXa8K7HT4V+Y5sPRt1rqVpSNZdp19tLQDIcDQnpjD9ZhwMcBUy8tEPQ==}
+  '@napgram/core@0.1.3':
+    resolution: {integrity: sha512-YQD6Fh4flTNtRRnZU8RhLqYBxnBtLCgWEoy4CTiI3FZExWa9+Th78e7hIvwHK7F0SyUH/Vxu3DrwNrRldD6zRQ==}
 
-  '@napgram/sdk@0.1.2':
-    resolution: {integrity: sha512-drYw/M3/+OlkkN8zdJ5ovy63uRDCVY9x9BBoZGPmUbEiIG+YSG/KJXACY49vq1SbAc5LK5YWlNfBHqQyRsJk1Q==}
+  '@napgram/sdk@0.1.3':
+    resolution: {integrity: sha512-rRE/BzoSbonFC8/2nA75Zz0ytjQukJiBbI2alje4waguz00y3Y8WtwOKwetkL1+YQqK8Gw56zjAi6OOVOSSPWQ==}
 
-  '@napgram/utils@0.1.2':
-    resolution: {integrity: sha512-JuxyR/0OCH9e0At2eCtNroNzdwYSYVj0thOm5d6IgRv6l1SLqdFTzZmMjKIPopM9AWM/C4jadUX32l0wADlH+Q==}
+  '@napgram/utils@0.1.3':
+    resolution: {integrity: sha512-26oNeyvV5OLujOlxGSwZ4k3D7Pim2nZs35lrwA9igcxeznDLQatmICnlGneIIIDmfV/QApV9enXmGChrHqlIYA==}
 
   '@types/node@25.0.3':
     resolution: {integrity: sha512-W609buLVRVmeW693xKfzHeIV6nJGGz98uCPfeXI1ELMLXVeKYZ9m15fAMSaUPBHYLGFsVRcMmSCksQOrZV9BYA==}
@@ -138,16 +138,16 @@ packages:
 
 snapshots:
 
-  '@napgram/core@0.1.2': {}
+  '@napgram/core@0.1.3': {}
 
-  '@napgram/sdk@0.1.2':
+  '@napgram/sdk@0.1.3':
     dependencies:
-      '@napgram/core': 0.1.2
-      '@napgram/utils': 0.1.2
+      '@napgram/core': 0.1.3
+      '@napgram/utils': 0.1.3
 
-  '@napgram/utils@0.1.2':
+  '@napgram/utils@0.1.3':
     dependencies:
-      '@napgram/core': 0.1.2
+      '@napgram/core': 0.1.3
 
   '@types/node@25.0.3':
     dependencies:
