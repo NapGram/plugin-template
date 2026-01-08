@@ -13,11 +13,6 @@ const plugin = definePlugin({
   author: 'NapLink',
   description: 'A native NapGram plugin example that replies pong to ping.',
 
-  // 权限声明
-  permissions: {
-    instances: [0], // 访问实例 0
-  },
-
   // 插件安装
   async install(ctx) {
     ctx.logger.info('Ping Pong plugin installed');
