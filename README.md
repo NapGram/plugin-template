@@ -1,8 +1,8 @@
 # napgram-plugin-template
 
-NapGram 原生插件模板仓库（可作为 GitHub **Template repository** 使用）。
+[NapGram](https://github.com/NapGram/NapGram) 原生插件模板仓库（可作为 GitHub **Template repository** 使用）。
 
-这是 **NapGram 原生插件** 模板：插件直接运行在 NapGram 进程内，通过原生 API 访问平台功能。
+这是 **NapGram 原生插件** 模板：插件直接运行在 [NapGram](https://github.com/NapGram/NapGram) 进程内，通过原生 API 访问平台功能。
 
 ## 特点
 
